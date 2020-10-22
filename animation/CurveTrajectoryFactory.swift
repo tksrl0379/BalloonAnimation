@@ -15,12 +15,12 @@ struct CurveTrajectoryRatio {
 struct CurveTrajectoryFactory {
     
     private var rightCurve: [CurveTrajectoryRatio] = [
-        CurveTrajectoryRatio(x: 1.2, y: 0.8), CurveTrajectoryRatio(x: 1.0, y: 0.9),
-        CurveTrajectoryRatio(x: 1.1, y: 1.2), CurveTrajectoryRatio(x: 0.9, y: 0.7)
+        CurveTrajectoryRatio(x: 1.03, y: 0.8), CurveTrajectoryRatio(x: 1.0, y: 0.9),
+        CurveTrajectoryRatio(x: 1.05, y: 1.2), CurveTrajectoryRatio(x: 0.95, y: 0.7)
     ]
     private var leftCurve: [CurveTrajectoryRatio] = [
-        CurveTrajectoryRatio(x: -1.2, y: 0.8), CurveTrajectoryRatio(x: -1.0, y: 0.9),
-        CurveTrajectoryRatio(x: -1.1, y: 1.2), CurveTrajectoryRatio(x: -0.9, y: 0.7)
+        CurveTrajectoryRatio(x: -1.03, y: 0.8), CurveTrajectoryRatio(x: -1.0, y: 0.9),
+        CurveTrajectoryRatio(x: -1.05, y: 1.2), CurveTrajectoryRatio(x: -0.95, y: 0.7)
     ]
     
     private func randomLeftCurve() -> CurveTrajectoryRatio {

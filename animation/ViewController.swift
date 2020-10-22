@@ -15,15 +15,18 @@ class ViewController: UIViewController {
     }
   
     @IBAction func buttontouch(_ sender: UIButton) {
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        imageView.center = self.view.center
-        imageView.center.y = self.view.center.y + 200
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
+        imageView.center = sender.center
         imageView.image = #imageLiteral(resourceName: "star.png")
         self.view.addSubview(imageView)
-            
-        let balloon = Balloon(imageView: imageView)
         
-        balloon.animate(fromPoint: sender.layer.position, toPoint: CGPoint(x: sender.layer.position.x, y: sender.layer.position.y - 500))
+       
+        print(imageView.frame)
+        let balloon = Balloon(imageView: imageView)
+
+        let randomX = CGFloat.random(in: -30...30)
+        let randomY = CGFloat.random(in: 250...350)
+        balloon.animate(fromPoint: sender.layer.position, toPoint: CGPoint(x: sender.layer.position.x + randomX, y: sender.layer.position.y - randomY))
     }
     
 }
