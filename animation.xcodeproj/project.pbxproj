@@ -105,11 +105,11 @@
 		33D78D47253FE167008AF090 /* animation */ = {
 			isa = PBXGroup;
 			children = (
+				33D78D9D2541C11F008AF090 /* model */,
+				33D78D9E2541C132008AF090 /* view */,
+				33D78D9C2541C116008AF090 /* controller */,
 				33D78D48253FE167008AF090 /* AppDelegate.swift */,
 				33D78D4A253FE167008AF090 /* SceneDelegate.swift */,
-				33D78D4C253FE167008AF090 /* ViewController.swift */,
-				33D78D8E2541892C008AF090 /* CurveTrajectoryFactory.swift */,
-				33D78D9325419A89008AF090 /* Balloon.swift */,
 				33D78D4E253FE167008AF090 /* Main.storyboard */,
 				33D78D51253FE168008AF090 /* Assets.xcassets */,
 				33D78D87253FF1B6008AF090 /* star.png */,
@@ -135,6 +135,30 @@
 				33D78D6C253FE168008AF090 /* Info.plist */,
 			);
 			path = animationUITests;
+			sourceTree = "<group>";
+		};
+		33D78D9C2541C116008AF090 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				33D78D4C253FE167008AF090 /* ViewController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		33D78D9D2541C11F008AF090 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				33D78D8E2541892C008AF090 /* CurveTrajectoryFactory.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		33D78D9E2541C132008AF090 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				33D78D9325419A89008AF090 /* Balloon.swift */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

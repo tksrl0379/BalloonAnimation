@@ -7,9 +7,6 @@
 
 import UIKit
 
-public typealias CAAnimationBlockCallback = (CAAnimation, Bool) -> ();
-
-
 class Balloon: NSObject, CAAnimationDelegate {
 
     
@@ -21,11 +18,8 @@ class Balloon: NSObject, CAAnimationDelegate {
     }
     
     public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        
         imageView.removeFromSuperview()
-        
     }
-    
     
     private func addCurveToPath(path: UIBezierPath, start: CGPoint, end: CGPoint, ratio: CurveTrajectoryRatio) {
         let dist = start.y - end.y
@@ -36,9 +30,9 @@ class Balloon: NSObject, CAAnimationDelegate {
 
     private func curves(path: UIBezierPath, start: CGPoint, end: CGPoint, counts: Int, ratios: [CurveTrajectoryRatio]) {
         var _start = start, _end = end
-        let dist = start.y - end.y
+        let distance = start.y - end.y
         zip((1...counts), ratios).forEach { index, ratio in
-            _end.y = start.y - dist * CGFloat(index)/CGFloat(counts)
+            _end.y = start.y - distance * CGFloat(index)/CGFloat(counts)
             addCurveToPath(path: path, start: _start, end: _end, ratio: ratio)
             _start = _end
         }
@@ -56,13 +50,8 @@ class Balloon: NSObject, CAAnimationDelegate {
         let pathAnimation = CAKeyframeAnimation(keyPath: "position")
         pathAnimation.path = path.cgPath
         let duration = Int.random(in: 3...5)
-        pathAnimation.duration               = CFTimeInterval(duration)
-        pathAnimation.timingFunction        = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
-        
-        // 남기려면 아래 두 줄 주석해제
-        pathAnimation.isRemovedOnCompletion = false
-        pathAnimation.fillMode = CAMediaTimingFillMode.forwards
-        
+        pathAnimation.duration = CFTimeInterval(duration)
+        pathAnimation.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
         
         let sizeAnimation = CABasicAnimation(keyPath: "transform.scale")
         sizeAnimation.fromValue = 1
@@ -74,8 +63,11 @@ class Balloon: NSObject, CAAnimationDelegate {
         let bothAnimation = CAAnimationGroup()
         bothAnimation.animations = [pathAnimation, sizeAnimation]
         bothAnimation.duration = CFTimeInterval(duration)
+        bothAnimation.delegate = self // CAAnimationDelegate 받으려면 설정해줘야 함.
         
-        bothAnimation.delegate = self
+        // 도착한 자리에 남기려면 delegate 주석 및 아래 두 줄 주석해제
+//        bothAnimation.isRemovedOnCompletion = false
+//        bothAnimation.fillMode = CAMediaTimingFillMode.forwards
         
         imageView.layer.add(bothAnimation, forKey:"ballonAnimation")
     }

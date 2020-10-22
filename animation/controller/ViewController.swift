@@ -20,10 +20,7 @@ class ViewController: UIViewController {
         imageView.image = #imageLiteral(resourceName: "star.png")
         self.view.addSubview(imageView)
         
-       
-        print(imageView.frame)
         let balloon = Balloon(imageView: imageView)
-
         let randomX = CGFloat.random(in: -30...30)
         let randomY = CGFloat.random(in: 250...350)
         balloon.animate(fromPoint: sender.layer.position, toPoint: CGPoint(x: sender.layer.position.x + randomX, y: sender.layer.position.y - randomY))
