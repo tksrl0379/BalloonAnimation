@@ -21,9 +21,8 @@ class ViewController: UIViewController {
         self.view.addSubview(imageView)
         
         let balloon = Balloon(imageView: imageView)
-        let randomX = CGFloat.random(in: -30...30)
-        let randomY = CGFloat.random(in: 250...350)
-        balloon.animate(fromPoint: sender.layer.position, toPoint: CGPoint(x: sender.layer.position.x + randomX, y: sender.layer.position.y - randomY))
+        balloon.animate(fromPoint: sender.layer.position)
+        //sender.layer.position(이건 layer) vs center(이건 uiview)
     }
     
 }
